@@ -1,24 +1,22 @@
 package pl.javastart.jpaoptimalization.countrylanguage;
 
+import java.util.Collection;
 import java.util.List;
 
 public class CountryAndLanguageDto {
     private String countryName;
-    private List<CountryLanguage> languages;
+    private Collection<CountryLanguage> languages;
+
+    public CountryAndLanguageDto(String countryName, Collection<CountryLanguage> languages) {
+        this.countryName = countryName;
+        this.languages = languages;
+    }
 
     public String getCountryName() {
         return countryName;
     }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
-    }
-
-    public List<CountryLanguage> getLanguages() {
+    public Collection<CountryLanguage> getLanguages() {
         return languages;
-    }
-
-    public void setLanguages(List<CountryLanguage> languages) {
-        this.languages = languages;
     }
 }

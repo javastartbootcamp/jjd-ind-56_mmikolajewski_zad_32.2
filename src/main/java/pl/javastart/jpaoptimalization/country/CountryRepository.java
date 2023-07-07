@@ -15,7 +15,7 @@ public interface CountryRepository extends JpaRepository<Country, String> {
             "ORDER BY c.name ASC ")
     List<CountryWithBiggestCityAndPopulationDto> findAllWithTheBiggerCityAndPopulation();
 
-        @Query("SELECT new pl.javastart.jpaoptimalization.countrylanguage.CountryAndLanguageDto(c.name, c.languages ) " +
+        @Query("SELECT new pl.javastart.jpaoptimalization.countrylanguage.CountryAndLanguageDto(c.name, c.languages) " +
             "FROM Country c " +
             "JOIN c.languages l " +
             "WHERE l.countryCode = c.code " +
