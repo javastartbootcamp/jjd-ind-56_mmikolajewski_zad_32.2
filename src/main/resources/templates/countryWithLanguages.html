@@ -26,7 +26,7 @@
         </thead>
         <tbody>
         <tr th:each="country: ${countries}">
-            <td th:text="${country.name}"></td>
+            <td th:text="${country.getCountryName()}"></td>
             <td th:if="${country.getLanguages()}" th:text="${country.getLanguages()}"></td>
         </tr>
         </tbody>

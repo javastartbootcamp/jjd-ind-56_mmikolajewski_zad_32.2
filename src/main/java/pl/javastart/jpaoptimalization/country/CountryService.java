@@ -1,6 +1,7 @@
 package pl.javastart.jpaoptimalization.country;
 
 import org.springframework.stereotype.Service;
+import pl.javastart.jpaoptimalization.countrylanguage.CountryAndLanguageDto;
 
 import java.util.List;
 
@@ -11,6 +12,14 @@ public class CountryService {
 
     public CountryService(CountryRepository countryRepository) {
         this.countryRepository = countryRepository;
+    }
+
+    public List<CountryWithBiggestCityAndPopulationDto> findAllCountriesWithBiggestCitiesAndPopulation() {
+        return countryRepository.findAllWithTheBiggerCityAndPopulation();
+    }
+
+    public List<CountryAndLanguageDto> findAllWithLanguage() {
+        return countryRepository.findAllWithLanguage();
     }
 
     public List<Country> findAll() {
