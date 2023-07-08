@@ -2,7 +2,6 @@ package pl.javastart.jpaoptimalization.country;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import pl.javastart.jpaoptimalization.countrylanguage.CountryAndLanguageDto;
 
 import java.util.List;
 
@@ -15,11 +14,8 @@ public interface CountryRepository extends JpaRepository<Country, String> {
             "ORDER BY c.name ASC ")
     List<CountryWithBiggestCityAndPopulationDto> findAllWithTheBiggerCityAndPopulation();
 
-        @Query("SELECT new pl.javastart.jpaoptimalization.countrylanguage.CountryAndLanguageDto(c.name, c.languages) " +
-            "FROM Country c " +
-            "JOIN c.languages l " +
-            "WHERE l.countryCode = c.code " +
-            "ORDER BY c.name ASC ")
-    List<CountryAndLanguageDto> findAllWithLanguage();
+    @Query("SELECT DISTINCT c FROM Country c LEFT JOIN FETCH c.languages ORDER BY c.name")
+    List<Country> findAllWithLanguage();
+
 
 }
